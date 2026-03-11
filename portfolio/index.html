@@ -15,43 +15,74 @@
                 <!-- Logo linksbündig über Videos -->
                 <img src="logo.png" alt="" class="logo">
 
-                <!-- Video-Wrappers mit Datenattribut für die Vimeo-ID -->
-                <div class="video-wrapper" data-vimeo-id="43720180"></div>
-                <div class="video-wrapper" data-vimeo-id="760828515"></div>
-                <div class="video-wrapper" data-vimeo-id="141259204"></div>
-                <div class="video-wrapper" data-vimeo-id="760855186"></div>              
-                <div class="video-wrapper" data-vimeo-id="6798661"></div>
-                <div class="video-wrapper" data-vimeo-id="13058458"></div>
-                <div class="video-wrapper" data-vimeo-id="60821187"></div>
-                <div class="video-wrapper" data-vimeo-id="115930638"></div>
+                <!-- Video 1 -->
+                <div class="video-wrapper">
+                    <iframe
+                        src="https://player.vimeo.com/video/43720180?badge=0&amp;player_id=0&amp;app_id=58479&amp;color=dd5424&amp;title=0&amp;byline=0&amp;portrait=0"
+                        frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" title="demoreel"></iframe>
+                </div>
+
+                <!-- Video 2 -->
+                <div class="video-wrapper">
+                    <iframe
+                        src="https://player.vimeo.com/video/760828515?badge=0&amp;player_id=0&amp;app_id=58479&amp;color=dd5424&amp;title=0&amp;byline=0&amp;portrait=0"
+                        frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" title="from outside"></iframe>
+                </div>
+
+                <!-- Video 3 -->
+                <div class="video-wrapper">
+                    <iframe
+                        src="https://player.vimeo.com/video/141259204?badge=0&amp;player_id=0&amp;app_id=58479&amp;color=dd5424&amp;title=0&amp;byline=0&amp;portrait=0"
+                        frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" title="der weg ist das ziel"></iframe>
+                </div>
+
+                <!-- Video 4 -->
+                <div class="video-wrapper">
+                    <iframe
+                        src="https://player.vimeo.com/video/760855186?badge=0&amp;player_id=0&amp;app_id=58479&amp;color=dd5424&amp;title=0&amp;byline=0&amp;portrait=0"
+                        frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" title="pbm.radio"></iframe>
+                </div>
+
+                <!-- Video 5 -->
+                <div class="video-wrapper">
+                    <iframe
+                        src="https://player.vimeo.com/video/6798661?badge=0&amp;player_id=0&amp;app_id=58479&amp;color=dd5424&amp;title=0&amp;byline=0&amp;portrait=0"
+                        frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" title="aviarium"></iframe>
+                </div>
+
+                <!-- Video 6 -->
+                <div class="video-wrapper">
+                    <iframe
+                        src="https://player.vimeo.com/video/13058458?badge=0&amp;player_id=0&amp;app_id=58479&amp;color=dd5424&amp;title=0&amp;byline=0&amp;portrait=0"
+                        frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" title="ejercicio nocturno"></iframe>
+                </div>
+
+                <!-- Video 7 -->
+                <div class="video-wrapper">
+                    <iframe
+                        src="https://player.vimeo.com/video/60821187?badge=0&amp;player_id=0&amp;app_id=58479&amp;color=dd5424&amp;title=0&amp;byline=0&amp;portrait=0"
+                        frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" title="algorhythmus"></iframe>
+                </div>
+
+                <!-- Video 8 -->
+                <div class="video-wrapper">
+                    <iframe
+                        src="https://player.vimeo.com/video/115930638?badge=0&amp;player_id=0&amp;app_id=58479&amp;color=dd5424&amp;title=0&amp;byline=0&amp;portrait=0"
+                        frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" title="demoreel"></iframe>
+                </div>
+
+                <script src="https://player.vimeo.com/api/player.js"></script>
+                 
             </div>
         </main>
     </div>
-
-    <!-- Vimeo API -->
-    <script src="https://player.vimeo.com/api/player.js"></script>
-    <script>
-        // Alle .video-wrapper durchlaufen und iframe erzeugen
-        document.querySelectorAll('.video-wrapper').forEach(wrapper => {
-            const id = wrapper.dataset.vimeoId;
-            const iframeDiv = document.createElement('div');
-            iframeDiv.style.position = 'relative';
-            iframeDiv.style.paddingTop = '56.25%'; // 16:9
-
-            const iframe = document.createElement('iframe');
-            iframe.src = `https://player.vimeo.com/video/${id}?badge=0&autopause=0`;
-            iframe.style.position = 'absolute';
-            iframe.style.top = '0';
-            iframe.style.left = '0';
-            iframe.style.width = '100%';
-            iframe.style.height = '100%';
-            iframe.frameBorder = 0;
-            iframe.allow = "autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share";
-            iframe.title = `Video ${id}`;
-
-            iframeDiv.appendChild(iframe);
-            wrapper.appendChild(iframeDiv);
-        });
-    </script>
 </body>
 </html>
