@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impressum – Arne Münch</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* nur für impressum: kleinere, graue schrift */
+        .impressum-content {
+            font-size: 0.9rem;
+            /* etwas kleiner */
+            color: #555;
+            /* dunkel bis mittelgrau */
+            line-height: 1.5;
+        }
+
+        .impressum-content a {
+            color: #E53E04;
+            /* etwas heller für Links */
+            text-decoration: none;
+        }
+
+        .impressum-content a:hover {
+            color: #F1784D;
+            /* noch heller bei Hover */
+        }
+        /* Email contact Span */
+        #emailContact {
+            color: #E53E04;
+            text-decoration: none;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        #emailContact:hover {
+            color: #F1784D; /* heller beim Hover */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Header Container -->
+        <div id="headerContainer"></div>
+
+        <main>
+            <div class="portfolio-wrapper">
+
+                <p class="impressum-content"><strong>Impressum</strong></p>
+
+                <div class="impressum-content">
+                    <p>Verantwortlicher:</p>
+                    <p>
+                        Arne Münch<br>
+                        Heinrich-Bürgers-Str.2-4<br>
+                        50827 Köln<br>
+                        Mobile: +49 178 1448296<br>
+                        USt-IdNr.: DE297699560<br>
+                        <span id="emailContact">email contact</span>
+                        <script>
+                            const emailUser = "a-muench";
+                            const emailDomain = "gmx.de";
+                            
+                            const emailSpan = document.getElementById("emailContact");
+                            emailSpan.addEventListener("click", () => {
+                            const email = `${emailUser}@${emailDomain}`;
+                            const mailtoLink = document.createElement("a");
+                            mailtoLink.href = `mailto:${email}`;
+                            mailtoLink.textContent = email;
+                            mailtoLink.style.textDecoration = "none";
+                            emailSpan.replaceWith(mailtoLink);
+                            });
+                        </script>
+                    </p>
+                </div>
+
+            </div>
+        </main>
+
+        <!-- Footer Container -->
+        <div id="footerContainer"></div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

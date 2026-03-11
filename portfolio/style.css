@@ -1,11 +1,7 @@
-/* Reset und Grundstil */
+/* gesamte Seite Font */
 body,
 html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    font-family: Arial, sans-serif;
-    color: white;
+    font-family: 'Roboto Sans', sans-serif;
 }
 
 /* Hintergrundbild */
@@ -15,11 +11,56 @@ body {
     /* Bild füllt Bildschirm, Seitenverhältnis bleibt */
 }
 
+/* Header / Menu */
+.site-header {
+    width: 100%;
+    padding: 20px 0;
+    /* optional Abstand */
+}
+
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    /* Logo links, Menü rechts */
+    align-items: flex-start;
+    /* Items oben ausrichten */
+    flex-wrap: nowrap;
+}
+
+.menu {
+    display: flex;
+    gap: 30px;
+    /* Abstand zwischen Menüpunkten */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li a {
+    color: #E53E04;
+    text-decoration: none;
+    transition: color 0.2s;
+    font-style: italic;
+    /* nur das Menü kursiv */
+}
+
+.menu li a:hover {
+    color: #F1784D;
+    /* etwas heller beim Hover */
+}
+
+.menu li.active a {
+    color: #F1784D;
+    /* ausgewählter Punkt heller */
+}
+
+
+
 /* Hauptcontainer: max 900px, 95% Breite, zentriert */
 .container {
     width: 95%;
     max-width: 900px;
-    margin: 50px auto 50px auto;
+    margin: auto auto 50px auto;
     /* Abstand oben + zentriert */
     display: flex;
     flex-direction: column;
@@ -65,4 +106,121 @@ body {
     .logo {
         width: 120px;
     }
+}
+
+/* Thumbnail Grid */
+
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-top: 7%;
+}
+
+/* Thumbnail */
+
+.thumb {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    /* 16:9 */
+    cursor: pointer;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    /* Rückweg = 0.3s */
+}
+
+.thumb img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(1);
+    transition: filter 0.3s ease;
+    /* Rückweg = 0.3s */
+}
+
+.thumb:hover {
+    opacity: 0.8;
+    transition: opacity 0.5s ease;
+    /* Hover-In = 0.5s */
+}
+
+.thumb:hover img {
+    filter: brightness(1.1);
+    transition: filter 0.5s ease;
+    /* Hover-In = 0.5s */
+}
+
+/* maximal 4 Spalten */
+
+@media (min-width:800px) {
+
+    .video-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+}
+
+/* 3 Spalten */
+
+@media (max-width:800px) {
+
+    .video-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
+
+/* 2 Spalten */
+
+@media (max-width:500px) {
+
+    .video-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+/* Footer */
+.site-footer {
+    text-align: left;
+    margin-top: 50px;
+    color: #777777;
+    /* dunkelgrau */
+    font-size: 0.9rem;
+}
+
+.site-footer hr {
+    border: none;
+    border-top: 1px solid #888888;
+    /* graue Linie */
+    margin: 15px 0;
+}
+
+.site-footer a.impressum {
+    display: inline-block;
+    color: #888888;
+    /* Standard grauer Link */
+    text-decoration: none;
+    /* keine Unterstreichung */
+    margin-bottom: 5px;
+    transition: color 0.2s;
+    /* sanfter Übergang */
+}
+
+.site-footer a.impressum:hover {
+    color: #aaaaaa;
+    /* etwas heller beim Hover */
+    text-decoration: none;
+    /* Unterstreichung verhindern */
+}
+
+.site-footer p {
+    margin: 0;
+    /* entfernt standardmäßigen Abstand */
+    color: #777777;
+    font-size: 0.9rem;
 }
