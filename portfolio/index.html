@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>arnemuench.de</title>
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <main>
+            <div class="portfolio-wrapper">
+                <!-- Logo linksbündig über Videos -->
+                <img src="logo.png" alt="Mein Logo" class="logo">
+
+                <!-- Video-Wrappers mit Datenattribut für die Vimeo-ID -->
+                <div class="video-wrapper" data-vimeo-id="43720180"></div>
+                <div class="video-wrapper" data-vimeo-id="760828515"></div>
+                <div class="video-wrapper" data-vimeo-id="141259204"></div>
+                <div class="video-wrapper" data-vimeo-id="760855186"></div>              
+                <div class="video-wrapper" data-vimeo-id="6798661"></div>
+                <div class="video-wrapper" data-vimeo-id="13058458"></div>
+                <div class="video-wrapper" data-vimeo-id="60821187"></div>
+                <div class="video-wrapper" data-vimeo-id="100347536"></div>
+                <div class="video-wrapper" data-vimeo-id="115930638"></div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Vimeo API -->
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    <script>
+        // Alle .video-wrapper durchlaufen und iframe erzeugen
+        document.querySelectorAll('.video-wrapper').forEach(wrapper => {
+            const id = wrapper.dataset.vimeoId;
+            const iframeDiv = document.createElement('div');
+            iframeDiv.style.position = 'relative';
+            iframeDiv.style.paddingTop = '56.25%'; // 16:9
+
+            const iframe = document.createElement('iframe');
+            iframe.src = `https://player.vimeo.com/video/${id}?badge=0&autopause=0`;
+            iframe.style.position = 'absolute';
+            iframe.style.top = '0';
+            iframe.style.left = '0';
+            iframe.style.width = '100%';
+            iframe.style.height = '100%';
+            iframe.frameBorder = 0;
+            iframe.allow = "autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share";
+            iframe.title = `Video ${id}`;
+
+            iframeDiv.appendChild(iframe);
+            wrapper.appendChild(iframeDiv);
+        });
+    </script>
+</body>
+</html>
