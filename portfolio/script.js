@@ -3,7 +3,10 @@
 // -----------------------------
 function loadHTML(id, url) {
     fetch(url)
-        .then(res => res.text())
+        .then(res => {
+            if (!res.ok) throw new Error("Header nicht gefunden");
+            return res.text();
+        })
         .then(data => {
             document.getElementById(id).innerHTML = data;
 
@@ -26,8 +29,8 @@ function loadHTML(id, url) {
         });
 }
 
-loadHTML("headerContainer", "header.html");
-loadHTML("footerContainer", "footer.html");
+loadHTML("headerContainer", "/header.html");
+loadHTML("footerContainer", "/footer.html");
 
 // -----------------------------
 // 2️⃣ Video Grid & Wechsel (alte Logik)
