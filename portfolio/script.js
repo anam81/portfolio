@@ -6,26 +6,12 @@ function loadHTML(id, url) {
         .then(res => res.text())
         .then(data => {
             document.getElementById(id).innerHTML = data;
-            // ✅ Header geladen? dann active-Klasse setzen
+
             if (id === "headerContainer") {
-                const menuLinks = document.querySelectorAll(".menu li a");
+                const currentPage = document.body.dataset.page;
 
-                let currentPage = window.location.pathname.split("/").pop();
-
-                // Startseite ohne Name
-                if (currentPage === "" || currentPage === "index") {
-                    currentPage = "index.html";
-                }
-
-                menuLinks.forEach(link => {
-                    let linkHref = link.getAttribute("href");
-
-                    // Falls online / Server ohne .html
-                    if (!linkHref.endsWith(".html")) {
-                        linkHref += ".html";
-                    }
-
-                    if (linkHref === currentPage) {
+                document.querySelectorAll(".menu a[data-page]").forEach(link => {
+                    if (link.dataset.page === currentPage) {
                         link.parentElement.classList.add("active");
                     } else {
                         link.parentElement.classList.remove("active");
@@ -33,13 +19,11 @@ function loadHTML(id, url) {
                 });
             }
 
-            // Footer geladen? dann Jahr setzen
             if (id === "footerContainer") {
                 const yearSpan = document.getElementById("year");
                 if (yearSpan) yearSpan.textContent = new Date().getFullYear();
             }
-        })
-        .catch(err => console.error("Fehler beim Laden von", url, err));
+        });
 }
 
 loadHTML("headerContainer", "header.html");
