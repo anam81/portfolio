@@ -4,18 +4,20 @@
 function loadHTML(id, url) {
     fetch(url)
         .then(res => res.text())
-        .then(data => document.getElementById(id).innerHTML = data)
+        .then(data => {
+            document.getElementById(id).innerHTML = data;
+
+            // Footer geladen? dann Jahr setzen
+            if (id === "footerContainer") {
+                const yearSpan = document.getElementById("year");
+                if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+            }
+        })
         .catch(err => console.error("Fehler beim Laden von", url, err));
 }
 
 loadHTML("headerContainer", "header.html");
 loadHTML("footerContainer", "footer.html");
-
-// aktuelles Jahr
-document.addEventListener("DOMContentLoaded", function () {
-    const yearSpan = document.getElementById("year");
-    if (yearSpan) yearSpan.textContent = new Date().getFullYear();
-});
 
 // -----------------------------
 // 2️⃣ Video Grid & Wechsel (alte Logik)

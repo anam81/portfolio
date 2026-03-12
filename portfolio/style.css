@@ -71,7 +71,14 @@ body {
     width: 150px;
     align-self: flex-start;
     margin-bottom: 3.5%;
-    /* Abstand zwischen Logo und Video */
+    cursor: pointer;
+    /* zeigt, dass es klickbar ist */
+    transition: filter 0.3s ease;
+    /* sanfte Übergang beim Hover */
+}
+.logo:hover {
+    filter: brightness(1.08);
+    /* wird etwas heller beim Hover */
 }
 
 /* Video responsive */
