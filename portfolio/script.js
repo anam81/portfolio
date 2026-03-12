@@ -10,15 +10,22 @@ function loadHTML(id, url) {
             if (id === "headerContainer") {
                 const menuLinks = document.querySelectorAll(".menu li a");
 
-                const path = window.location.pathname;
-                let currentPage = path.split("/").pop();
+                let currentPage = window.location.pathname.split("/").pop();
 
-                if (currentPage === "") {
+                // Startseite ohne Name
+                if (currentPage === "" || currentPage === "index") {
                     currentPage = "index.html";
                 }
 
                 menuLinks.forEach(link => {
-                    if (link.getAttribute("href") === currentPage) {
+                    let linkHref = link.getAttribute("href");
+
+                    // Falls online / Server ohne .html
+                    if (!linkHref.endsWith(".html")) {
+                        linkHref += ".html";
+                    }
+
+                    if (linkHref === currentPage) {
                         link.parentElement.classList.add("active");
                     } else {
                         link.parentElement.classList.remove("active");
