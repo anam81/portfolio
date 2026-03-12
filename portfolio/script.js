@@ -1,18 +1,23 @@
 // -----------------------------
-// 1️⃣ Header/Footer dynamisch laden
+// 1️⃣ Header/Footer dynamisch laden + active setzen
 // -----------------------------
 function loadHTML(id, url) {
     fetch(url)
         .then(res => {
-            if (!res.ok) throw new Error("Header nicht gefunden");
+            if (!res.ok) throw new Error(`Fehler beim Laden von ${url}`);
             return res.text();
         })
         .then(data => {
+            // HTML einfügen
             document.getElementById(id).innerHTML = data;
 
+            // -----------------------------
+            // Header: active-Klasse setzen
+            // -----------------------------
             if (id === "headerContainer") {
                 const currentPage = document.body.dataset.page;
 
+                // Nur Links mit data-page prüfen
                 document.querySelectorAll(".menu a[data-page]").forEach(link => {
                     if (link.dataset.page === currentPage) {
                         link.parentElement.classList.add("active");
@@ -22,14 +27,21 @@ function loadHTML(id, url) {
                 });
             }
 
+            // -----------------------------
+            // Footer: Jahr automatisch setzen
+            // -----------------------------
             if (id === "footerContainer") {
                 const yearSpan = document.getElementById("year");
                 if (yearSpan) yearSpan.textContent = new Date().getFullYear();
             }
-        });
+        })
+        .catch(err => console.error(err));
 }
 
-loadHTML("headerContainer", "/header.html");
+// -----------------------------
+// Header und Footer laden
+// -----------------------------
+loadHTML("headerContainer", "/header.html");  // "/" = Root, sicher online & lokal
 loadHTML("footerContainer", "/footer.html");
 
 // -----------------------------
