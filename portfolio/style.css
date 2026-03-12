@@ -20,8 +20,9 @@ body {
 
 /* Header / Menu */
 .site-header {
-    padding-top: 20px;
-    padding-bottom: 0;
+    width: 100%;
+    padding: 20px 0;
+    /* optional Abstand */
 }
 
 .header-inner {
@@ -81,7 +82,7 @@ nav {
 .logo {
     width: 150px;
     align-self: flex-start;
-    margin-bottom: 1%;
+    margin-bottom: 3.5%;
     cursor: pointer;
     /* zeigt, dass es klickbar ist */
     transition: filter 0.3s ease;
@@ -98,7 +99,7 @@ nav {
     width: 100%;
     padding-top: 56.25%;
     /* 16:9 */
-    margin-top: 1%;
+    margin-top: 3.5%;
     /* Abstand zwischen Videos */
 }
 .video-description {
@@ -300,7 +301,7 @@ nav {
     font-size: 0.9rem;
     color: var(--text-color);
     line-height: 1.5;
-    margin-top: 2%;
+    margin-top: 3%;
 }
 
 /* Container für Foto + Kontakt */
