@@ -27,6 +27,9 @@ const videos = [
 
 { id:"43720180", title:"demoreel"},
 { id:"760828515", title:"from outside"},
+{ id: "159606491", title: "impulses" },
+{ id: "259777046", title: "the tri drank the angle" },
+{ id: "363118107", title: "circulation" },
 { id:"141259204", title:"der weg ist das ziel"},
 { id:"760855186", title:"pbm.radio"},
 { id:"6798661", title:"aviarium"},
