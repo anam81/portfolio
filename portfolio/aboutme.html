@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body data-page="about">
     <div class="container">
 
         <!-- Header Container -->
@@ -62,9 +62,6 @@
             mailtoLink.textContent = email;
             mailtoLink.style.textDecoration = "none";
             mailtoLink.style.transition = "color 0.2s";
-
-            /* mailtoLink.addEventListener("mouseover", () => mailtoLink.style.color = "#999");
-            mailtoLink.addEventListener("mouseout", () => mailtoLink.style.color = "#777"); */
 
             emailSpan.replaceWith(mailtoLink);
         });
