@@ -103,7 +103,7 @@ nav {
     /* Abstand zwischen Videos */
 }
 .video-description {
-    margin-top: 22px;
+    margin-top: 2%;
     font-size: 1rem;
     color: var(--text-color);
     text-align: left;

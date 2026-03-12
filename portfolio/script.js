@@ -9,10 +9,15 @@ function loadHTML(id, url) {
             // ✅ Header geladen? dann active-Klasse setzen
             if (id === "headerContainer") {
                 const menuLinks = document.querySelectorAll(".menu li a");
-                const currentPage = window.location.pathname.split("/").pop(); // z.B. "index.html"
+
+                const path = window.location.pathname;
+                let currentPage = path.split("/").pop();
+
+                if (currentPage === "") {
+                    currentPage = "index.html";
+                }
 
                 menuLinks.forEach(link => {
-                    // Nur relative Links markieren
                     if (link.getAttribute("href") === currentPage) {
                         link.parentElement.classList.add("active");
                     } else {
