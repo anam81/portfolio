@@ -1,5 +1,5 @@
 // -----------------------------
-// 1️⃣ Header/Footer dynamisch laden + active setzen
+// Header/Footer dynamisch laden + active setzen + Lottie Hover
 // -----------------------------
 function loadHTML(id, url) {
     fetch(url)
@@ -12,12 +12,12 @@ function loadHTML(id, url) {
             document.getElementById(id).innerHTML = data;
 
             // -----------------------------
-            // Header: active-Klasse setzen
+            // Header: active-Klasse setzen + Lottie
             // -----------------------------
             if (id === "headerContainer") {
                 const currentPage = document.body.dataset.page;
 
-                // Nur Links mit data-page prüfen
+                // Menü Links prüfen
                 document.querySelectorAll(".menu a[data-page]").forEach(link => {
                     if (link.dataset.page === currentPage) {
                         link.parentElement.classList.add("active");
@@ -25,6 +25,27 @@ function loadHTML(id, url) {
                         link.parentElement.classList.remove("active");
                     }
                 });
+
+                // Lottie Animation starten
+                const logoEl = document.getElementById('logo-lottie');
+                if (logoEl) {
+                    // Lottie Container sichtbar machen
+                    logoEl.style.pointerEvents = "auto";
+
+                    const logoAnim = lottie.loadAnimation({
+                        container: logoEl,
+                        renderer: 'svg',
+                        loop: false,
+                        autoplay: true,
+                        path: '/logo.json' // Pfad ggf. anpassen
+                    });
+
+                    // Hover → Animation neu starten
+                    logoEl.addEventListener('mouseenter', () => {
+                        logoAnim.stop(); // zurück auf Frame 0
+                        logoAnim.play(); // Animation starten
+                    });
+                }
             }
 
             // -----------------------------
@@ -41,7 +62,7 @@ function loadHTML(id, url) {
 // -----------------------------
 // Header und Footer laden
 // -----------------------------
-loadHTML("headerContainer", "/header.html");  // "/" = Root, sicher online & lokal
+loadHTML("headerContainer", "/header.html");
 loadHTML("footerContainer", "/footer.html");
 
 // -----------------------------
