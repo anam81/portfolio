@@ -1,3 +1,10 @@
+:root {
+    --link-color: #E53E04;
+    --hover-color: #f5845b;
+    --text-color: #555555;
+    --greylink-color: #888888;
+    --greyhover-color: #bbbbbb;
+}
 /* gesamte Seite Font */
 body,
 html {
@@ -37,7 +44,7 @@ body {
 }
 
 .menu li a {
-    color: #E53E04;
+    color: var(--link-color);
     text-decoration: none;
     transition: color 0.2s;
     font-style: italic;
@@ -45,12 +52,12 @@ body {
 }
 
 .menu li a:hover {
-    color: #F1784D;
+    color: var(--hover-color);
     /* etwas heller beim Hover */
 }
 
 .menu li.active a {
-    color: #F1784D;
+    color: var(--hover-color);
     /* ausgewählter Punkt heller */
 }
 
@@ -90,6 +97,20 @@ body {
     margin-top: 3.5%;
     /* Abstand zwischen Videos */
 }
+.video-description {
+    margin-top: 22px;
+    font-size: 1rem;
+    color: var(--text-color);
+    text-align: left;
+}
+.video-description a {
+    color: var(--link-color);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.video-description a:hover {
+    color: var(--hover-color);
+}
 
 /* Innerer div für Vimeo 16:9 Trick */
 .video-wrapper>div {
@@ -121,7 +142,7 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 15px;
-    margin-top: 7%;
+    margin-top: 4%;
 }
 
 /* Thumbnail */
@@ -161,6 +182,12 @@ body {
     /* Hover-In = 0.5s */
 }
 
+/* Fade für einzelnes Thumb */
+.thumb.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
 /* maximal 4 Spalten */
 
 @media (min-width:800px) {
@@ -195,21 +222,21 @@ body {
 .site-footer {
     text-align: left;
     margin-top: 50px;
-    color: #777777;
+    color: var(--text-color);
     /* dunkelgrau */
     font-size: 0.9rem;
 }
 
 .site-footer hr {
     border: none;
-    border-top: 1px solid #888888;
+    border-top: 1px solid var(--text-color);
     /* graue Linie */
     margin: 15px 0;
 }
 
 .site-footer a.impressum {
     display: inline-block;
-    color: #888888;
+    color: var(--greylink-color);
     /* Standard grauer Link */
     text-decoration: none;
     /* keine Unterstreichung */
@@ -219,7 +246,7 @@ body {
 }
 
 .site-footer a.impressum:hover {
-    color: #aaaaaa;
+    color: var(--greyhover-color);
     /* etwas heller beim Hover */
     text-decoration: none;
     /* Unterstreichung verhindern */
@@ -228,6 +255,86 @@ body {
 .site-footer p {
     margin: 0;
     /* entfernt standardmäßigen Abstand */
-    color: #777777;
+    color: var(--text-color);
     font-size: 0.9rem;
+}
+
+/* nur für impressum: kleinere, graue schrift */
+.impressum-content {
+    font-size: 0.9rem;
+    /* etwas kleiner */
+    color: var(--text-color);
+    /* dunkel bis mittelgrau */
+    line-height: 1.5;
+}
+
+.impressum-content a {
+    color: var(--link-color);
+    /* etwas heller für Links */
+    text-decoration: none;
+}
+
+.impressum-content a:hover {
+    color: var(--hover-color);
+    /* noch heller bei Hover */
+}
+
+/* Email contact Span */
+#emailContact {
+    color: var(--link-color);
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+#emailContact:hover {
+    color: var(--hover-color);
+    /* heller beim Hover */
+}
+
+.about-content {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    line-height: 1.5;
+    margin-top: 3%;
+}
+
+/* Container für Foto + Kontakt */
+.about-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    /* wichtig: Text kann unter das Bild rutschen */
+    gap: 17px;
+    /* Abstand zwischen Bild und Text */
+    margin-top: 3%;
+    align-items: flex-start;
+}
+
+.about-photo {
+    max-width: 200px;
+    width: 100%;
+}
+
+.about-contact {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    line-height: 1.5;
+    padding-right: 10px;
+    /* kleiner Abstand rechts */
+    flex: 1 1 0;
+    /* Text nimmt verbleibenden Platz, schrumpft bei Bedarf */
+    min-width: 160px;
+    /* optional: verhindert zu kleines Textfeld */
+}
+.about-contact a {
+    color: var(--link-color);
+    /* gleiche Farbe wie Menü */
+    text-decoration: none;
+    /* Unterstreichung aus */
+    transition: color 0.2s;
+    cursor: pointer;
+}
+.about-contact a:hover {
+    color: var(--hover-color);
+    /* Hover-Effekt */
 }

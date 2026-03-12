@@ -7,50 +7,6 @@
     <title>About Me – Arne Münch</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* kleiner Text für About Me */
-        .about-content {
-            font-size: 0.9rem;
-            color: #555;
-            line-height: 1.5;
-            margin-top: 3%;
-        }
-
-        /* Container für Foto + Kontakt */
-        .about-wrapper {
-            display: flex;
-            flex-wrap: wrap;      /* wichtig: Text kann unter das Bild rutschen */
-            gap: 17px;            /* Abstand zwischen Bild und Text */
-            margin-top: 3%;
-            align-items: flex-start;
-        }
-
-        .about-photo {
-            max-width: 200px;
-            width: 100%;
-        }
-
-        .about-contact {
-            font-size: 0.9rem;
-            color: #555;
-            line-height: 1.5;
-            padding-right: 10px;  /* kleiner Abstand rechts */
-            flex: 1 1 0;          /* Text nimmt verbleibenden Platz, schrumpft bei Bedarf */
-            min-width: 160px;     /* optional: verhindert zu kleines Textfeld */
-        }
-
-        /* Email contact span */
-        #emailContact {
-            color: #777;
-            text-decoration: none;
-            cursor: pointer;
-            transition: color 0.2s;
-        }
-
-        #emailContact:hover {
-            color: #999;
-        }
-    </style>
 </head>
 
 <body>
@@ -104,12 +60,11 @@
             const mailtoLink = document.createElement("a");
             mailtoLink.href = `mailto:${email}`;
             mailtoLink.textContent = email;
-            mailtoLink.style.color = "#777";
             mailtoLink.style.textDecoration = "none";
             mailtoLink.style.transition = "color 0.2s";
 
-            mailtoLink.addEventListener("mouseover", () => mailtoLink.style.color = "#999");
-            mailtoLink.addEventListener("mouseout", () => mailtoLink.style.color = "#777");
+            /* mailtoLink.addEventListener("mouseover", () => mailtoLink.style.color = "#999");
+            mailtoLink.addEventListener("mouseout", () => mailtoLink.style.color = "#777"); */
 
             emailSpan.replaceWith(mailtoLink);
         });
