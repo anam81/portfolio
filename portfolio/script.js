@@ -41,10 +41,10 @@ function loadHTML(id, url) {
                     });
 
                     // Hover → Animation neu starten
-                    logoEl.addEventListener('mouseenter', () => {
+                    /* logoEl.addEventListener('mouseenter', () => {
                         logoAnim.stop(); // zurück auf Frame 0
                         logoAnim.play(); // Animation starten
-                    });
+                    }); */
                 }
             }
 
