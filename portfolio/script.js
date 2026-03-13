@@ -34,7 +34,7 @@ function loadHTML(id, url) {
                         renderer: 'svg',
                         loop: false,
                         autoplay: true,
-                        path: '/logo.json' // Pfad ggf. anpassen
+                        path: '/assets/logo.json' // Pfad ggf. anpassen
                     });
 
                     // Hover → Animation neu starten
