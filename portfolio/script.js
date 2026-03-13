@@ -27,13 +27,10 @@ function loadHTML(id, url) {
                 });
 
                 // Lottie Animation starten
-                const logoEl = document.getElementById('logo-lottie');
-                if (logoEl) {
-                    // Lottie Container sichtbar machen
-                    logoEl.style.pointerEvents = "auto";
-
+                const logoOverlay = document.getElementById('logo-overlay');
+                if (logoOverlay) {
                     const logoAnim = lottie.loadAnimation({
-                        container: logoEl,
+                        container: logoOverlay,
                         renderer: 'svg',
                         loop: false,
                         autoplay: true,
@@ -41,7 +38,7 @@ function loadHTML(id, url) {
                     });
 
                     // Hover → Animation neu starten
-                    /* logoEl.addEventListener('mouseenter', () => {
+                    /* logoOverlay .addEventListener('mouseenter', () => {
                         logoAnim.stop(); // zurück auf Frame 0
                         logoAnim.play(); // Animation starten
                     }); */
@@ -64,6 +61,7 @@ function loadHTML(id, url) {
 // -----------------------------
 loadHTML("headerContainer", "/header.html");
 loadHTML("footerContainer", "/footer.html");
+
 
 // -----------------------------
 // 2️⃣ Video Grid & Wechsel (alte Logik)

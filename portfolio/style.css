@@ -10,12 +10,10 @@ body,
 html {
     font-family: 'Roboto Sans', sans-serif;
 }
-
 /* Hintergrundbild */
 body {
     margin: 0;
 }
-
 body::before {
     content: "";
     position: fixed;
@@ -23,29 +21,47 @@ body::before {
     left: 50%;
     width: 150vmax;
     height: 150vmax;
-    background: linear-gradient(90deg, #ffc69b, #ECFFFF);
+    background: linear-gradient(90deg, #ffcb9b,#daf6ff);
     transform-origin: center;
     transform: translate(-50%, -50%);
     z-index: -1;
     pointer-events: none;
-    animation: rotateLinear 7s linear infinite;
+    animation: rotateLinear 10s linear infinite;
+}
+body::after {
+    content: "";
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 150vmax;
+    height: 150vmax;
+    background: linear-gradient(90deg, #ffe6e6 30%, #000000 70%);
+    transform-origin: center;
+    transform: translate(-50%, -50%);
+    opacity: 50%;
+    z-index: -1;
+    pointer-events: none;
+    animation: rotateLinearBack 14s linear infinite;
+    mix-blend-mode: overlay;
 }
 
 @keyframes rotateLinear {
-    0% {
-        transform: translate(-50%, -50%) rotate(0deg);
-    }
-
-    100% {
-        transform: translate(-50%, -50%) rotate(360deg);
-    }
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
+@keyframes rotateLinearBack {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(-360deg); }
+}
+
 
 
 /* Header / Menu */
 .site-header {
     padding-top: 20px;
     padding-bottom: 0;
+    position: relative; /* damit Overlay absolut positioniert werden kann */
+    overflow: hidden; /* alles, was über den Header hinausgeht, wird abgeschnitten */
 }
 
 .header-inner {
@@ -56,8 +72,45 @@ body::before {
     /* Items oben ausrichten */
     flex-wrap: nowrap;
 }
+/* Hover auf den Link, das Overlay wird heller */
+.header-inner a:hover~.logo-overlay {
+    filter: brightness(1.08);
+    transition: filter 0.3s ease;
+}
 nav {
     min-width: 0;
+}
+.logo-placeholder {
+    width: 180px;
+    /* Endgröße deines Logos */
+    height: 150px;
+}
+
+.logo-overlay {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 576px;
+    /* größer, um die gesamte Lottie-Animation aufzunehmen */
+    height: 324px;
+    pointer-events: none;
+    /* Overlay blockiert keine Klicks auf Menü */
+    z-index: 10;
+    /* über dem Menü */
+    transform-origin: top left;
+}
+/* Mobile kleiner */
+@media (max-width: 700px) {
+    .logo-placeholder {
+        width: 132px;
+        height: 110px;
+    }
+}
+@media (max-width: 700px) {
+    .logo-overlay {
+        width: 422px;
+        height: 238px;
+    }
 }
 
 .menu {
@@ -101,21 +154,6 @@ nav {
     flex-direction: column;
 }
 
-/* Logo linksbündig */
-.logo {
-    width: 150px;
-    align-self: flex-start;
-    margin-bottom: 1%;
-    cursor: pointer;
-    /* zeigt, dass es klickbar ist */
-    transition: filter 0.3s ease;
-    /* sanfte Übergang beim Hover */
-}
-.logo:hover {
-    filter: brightness(1.08);
-    /* wird etwas heller beim Hover */
-}
-
 /* Video responsive */
 .video-wrapper {
     position: relative;
@@ -155,13 +193,6 @@ nav {
     width: 100%;
     height: 100%;
     border: 0;
-}
-
-/* Mobile Anpassung */
-@media (max-width: 700px) {
-    .logo {
-        width: 120px;
-    }
 }
 
 /* Thumbnail Grid */
