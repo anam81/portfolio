@@ -29,13 +29,16 @@ function loadHTML(id, url) {
                 // Lottie Animation starten
                 const logoOverlay = document.getElementById('logo-overlay');
                 if (logoOverlay) {
-                    const logoAnim = lottie.loadAnimation({
-                        container: logoOverlay,
-                        renderer: 'svg',
-                        loop: false,
-                        autoplay: true,
-                        path: 'assets/logo.json' // Pfad ggf. anpassen
-                    });
+                    setTimeout(() => {
+                        const logoAnim = lottie.loadAnimation({
+                            container: logoOverlay,
+                            renderer: 'svg',
+                            loop: false,
+                            autoplay: true,
+                            path: 'assets/logo.json'
+                        });
+
+                    }, 850); // 1 Sekunde Verzögerung
 
                     // Hover → Animation neu starten
                     /* logoOverlay .addEventListener('mouseenter', () => {
