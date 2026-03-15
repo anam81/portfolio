@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impressum – Arne Münch</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Header Container -->
+        <div id="headerContainer"></div>
+
+        <main>
+            <div class="portfolio-wrapper">
+
+                <p class="impressum-content"><strong>Impressum</strong></p>
+
+                <div class="impressum-content">
+                    <p>Verantwortlicher:</p>
+                    <p>
+                        Arne Münch<br>
+                        Heinrich-Bürgers-Str.2-4<br>
+                        50827 Köln<br>
+                        Mobile: +49 178 1448296<br>
+                        USt-IdNr.: DE297699560<br>
+                        <span id="emailContact">email contact</span>
+                        <script>
+                            const emailUser = "a-muench";
+                            const emailDomain = "gmx.de";
+                            
+                            const emailSpan = document.getElementById("emailContact");
+                            emailSpan.addEventListener("click", () => {
+                            const email = `${emailUser}@${emailDomain}`;
+                            const mailtoLink = document.createElement("a");
+                            mailtoLink.href = `mailto:${email}`;
+                            mailtoLink.textContent = email;
+                            mailtoLink.style.textDecoration = "none";
+                            emailSpan.replaceWith(mailtoLink);
+                            });
+                        </script>
+                    </p>
+                </div>
+
+            </div>
+        </main>
+
+        <!-- Footer Container -->
+        <div id="footerContainer"></div>
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

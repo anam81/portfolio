@@ -1,0 +1,399 @@
+:root {
+    --link-color: #E53E04;
+    --hover-color: #f5845b;
+    --text-color: #555555;
+    --greylink-color: #888888;
+    --greyhover-color: #bbbbbb;
+}
+/* gesamte Seite Font */
+body,
+html {
+    font-family: 'Roboto Sans', sans-serif;
+}
+/* Hintergrundbild */
+body {
+    margin: 0;
+}
+body::before {
+    content: "";
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 150vmax;
+    height: 150vmax;
+    background: linear-gradient(90deg, #ffcb9b,#daf6ff);
+    transform-origin: center;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    pointer-events: none;
+    animation: rotateLinear 10s linear infinite;
+}
+body::after {
+    content: "";
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 150vmax;
+    height: 150vmax;
+    background: linear-gradient(90deg, #ffe6e6 30%, #000000 70%);
+    transform-origin: center;
+    transform: translate(-50%, -50%);
+    opacity: 50%;
+    z-index: -1;
+    pointer-events: none;
+    animation: rotateLinearBack 14s linear infinite;
+    mix-blend-mode: overlay;
+}
+
+@keyframes rotateLinear {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+@keyframes rotateLinearBack {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(-360deg); }
+}
+
+
+
+/* Header / Menu */
+.site-header {
+    padding-top: 20px;
+    padding-bottom: 0;
+    position: relative; /* damit Overlay absolut positioniert werden kann */
+    overflow: hidden; /* alles, was über den Header hinausgeht, wird abgeschnitten */
+}
+
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    /* Logo links, Menü rechts */
+    align-items: flex-start;
+    /* Items oben ausrichten */
+    flex-wrap: nowrap;
+}
+/* Hover auf den Link, das Overlay wird heller */
+.header-inner a:hover~.logo-overlay {
+    filter: brightness(1.08);
+    transition: filter 0.3s ease;
+}
+nav {
+    min-width: 0;
+}
+.logo-placeholder {
+    width: 180px;
+    /* Endgröße deines Logos skaliert von 600 * 500*/
+    height: 150px;
+}
+
+.logo-overlay {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 576px;
+    /* größer, um die gesamte Lottie-Animation aufzunehmen, skaliert von 1920 * 1080*/
+    height: 324px;
+    pointer-events: none;
+    /* Overlay blockiert keine Klicks auf Menü */
+    z-index: 10;
+    /* über dem Menü */
+    transform-origin: top left;
+}
+/* Mobile kleiner */
+@media (max-width: 700px) {
+    .logo-placeholder {
+        width: 132px;
+        height: 110px;
+    }
+}
+@media (max-width: 700px) {
+    .logo-overlay {
+        width: 422px;
+        height: 238px;
+    }
+}
+
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    /* erlaubt Zeilenumbruch */
+    justify-content: flex-end;
+    gap: 6px 11px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li a {
+    color: var(--link-color);
+    text-decoration: none;
+    transition: color 0.2s;
+    font-style: italic;
+    /* nur das Menü kursiv */
+}
+
+.menu li a:hover {
+    color: var(--hover-color);
+    /* etwas heller beim Hover */
+}
+
+.menu li.active a {
+    color: var(--hover-color);
+    /* ausgewählter Punkt heller */
+}
+
+
+
+/* Hauptcontainer: max 900px, 95% Breite, zentriert */
+.container {
+    width: 95%;
+    max-width: 900px;
+    margin: auto auto 50px auto;
+    /* Abstand oben + zentriert */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Video responsive */
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    /* 16:9 */
+    margin-top: 1%;
+    /* Abstand zwischen Videos */
+}
+.video-description {
+    margin-top: 2%;
+    font-size: 1rem;
+    color: var(--text-color);
+    text-align: left;
+}
+.video-description a {
+    color: var(--link-color);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.video-description a:hover {
+    color: var(--hover-color);
+}
+
+/* Innerer div für Vimeo 16:9 Trick */
+.video-wrapper>div {
+    padding-top: 56.25%;
+    /* 16:9 */
+    position: relative;
+}
+
+/* iframe responsive */
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* Thumbnail Grid */
+
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-top: 4%;
+}
+
+/* Thumbnail */
+
+.thumb {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    /* 16:9 */
+    cursor: pointer;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    /* Rückweg = 0.3s */
+}
+
+.thumb img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(1);
+    transition: filter 0.3s ease;
+    /* Rückweg = 0.3s */
+}
+
+.thumb:hover {
+    opacity: 0.8;
+    transition: opacity 0.5s ease;
+    /* Hover-In = 0.5s */
+}
+
+.thumb:hover img {
+    filter: brightness(1.1);
+    transition: filter 0.5s ease;
+    /* Hover-In = 0.5s */
+}
+
+/* Fade für einzelnes Thumb */
+.thumb.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+/* maximal 4 Spalten */
+
+@media (min-width:800px) {
+
+    .video-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+}
+
+/* 3 Spalten */
+
+@media (max-width:800px) {
+
+    .video-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
+
+/* 2 Spalten */
+
+@media (max-width:500px) {
+
+    .video-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+/* Footer */
+.site-footer {
+    text-align: left;
+    margin-top: 50px;
+    color: var(--text-color);
+    /* dunkelgrau */
+    font-size: 0.9rem;
+}
+
+.site-footer hr {
+    border: none;
+    border-top: 1px solid var(--text-color);
+    /* graue Linie */
+    margin: 15px 0;
+}
+
+.site-footer a.impressum {
+    display: inline-block;
+    color: var(--greylink-color);
+    /* Standard grauer Link */
+    text-decoration: none;
+    /* keine Unterstreichung */
+    margin-bottom: 5px;
+    transition: color 0.2s;
+    /* sanfter Übergang */
+}
+
+.site-footer a.impressum:hover {
+    color: var(--greyhover-color);
+    /* etwas heller beim Hover */
+    text-decoration: none;
+    /* Unterstreichung verhindern */
+}
+
+.site-footer p {
+    margin: 0;
+    /* entfernt standardmäßigen Abstand */
+    color: var(--text-color);
+    font-size: 0.9rem;
+}
+
+/* nur für impressum: kleinere, graue schrift */
+.impressum-content {
+    font-size: 0.9rem;
+    /* etwas kleiner */
+    color: var(--text-color);
+    /* dunkel bis mittelgrau */
+    line-height: 1.5;
+}
+
+.impressum-content a {
+    color: var(--link-color);
+    /* etwas heller für Links */
+    text-decoration: none;
+}
+
+.impressum-content a:hover {
+    color: var(--hover-color);
+    /* noch heller bei Hover */
+}
+
+/* Email contact Span */
+#emailContact {
+    color: var(--link-color);
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+#emailContact:hover {
+    color: var(--hover-color);
+    /* heller beim Hover */
+}
+
+.about-content {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    line-height: 1.5;
+    margin-top: 2%;
+}
+
+/* Container für Foto + Kontakt */
+.about-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    /* wichtig: Text kann unter das Bild rutschen */
+    gap: 17px;
+    /* Abstand zwischen Bild und Text */
+    margin-top: 3%;
+    align-items: flex-start;
+}
+
+.about-photo {
+    max-width: 200px;
+    width: 100%;
+}
+
+.about-contact {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    line-height: 1.5;
+    padding-right: 10px;
+    /* kleiner Abstand rechts */
+    flex: 1 1 0;
+    /* Text nimmt verbleibenden Platz, schrumpft bei Bedarf */
+    min-width: 160px;
+    /* optional: verhindert zu kleines Textfeld */
+}
+.about-contact a {
+    color: var(--link-color);
+    /* gleiche Farbe wie Menü */
+    text-decoration: none;
+    /* Unterstreichung aus */
+    transition: color 0.2s;
+    cursor: pointer;
+}
+.about-contact a:hover {
+    color: var(--hover-color);
+    /* Hover-Effekt */
+}
