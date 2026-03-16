@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>arnemuench.de</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body data-page="works">
+
+    <div class="container">
+
+        <!-- Header Container -->
+        <div id="headerContainer"></div>
+
+        <main>
+            <div class="portfolio-wrapper">
+
+                <!-- Hauptvideo -->
+                <div class="video-wrapper">
+                    <iframe id="mainPlayer"
+                        src="https://player.vimeo.com/video/221156939?title=0&byline=0&portrait=0&color=dd5424"
+                        allow="autoplay; fullscreen; picture-in-picture" allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="video-description" id="videoDescription"></div>
+
+                <!-- Thumbnail Grid -->
+                <div id="videoGrid" class="video-grid"></div>
+
+            </div>
+        </main>
+
+        <!-- Footer Container -->
+        <div id="footerContainer"></div>
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
+    <script src="videos_client.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
