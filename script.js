@@ -118,7 +118,6 @@ function loadVideo(id) {
         if (vid.ratio && vid.ratio !== "16/9") {
             const className = 'video-' + vid.ratio.replace('/', '-');
             wrapper.classList.add(className);
-            console.log('Klasse hinzugefügt:', className);
         }
     }
 
