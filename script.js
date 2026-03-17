@@ -123,6 +123,12 @@ function loadVideo(id) {
 
     // Grid neu rendern
     renderGrid();
+
+    // Nach oben scrollen zum Video
+    window.scrollTo({
+        top: wrapper.offsetTop - 20, // 20px Abstand
+        behavior: 'smooth'
+    });
 }
 // -----------------------------
 // Erstes Video laden
