@@ -1,5 +1,10 @@
 const videos = [
     {
+        id: "260226326",
+        title: "energy future",
+        description: "This was for a pitch of an energy providers website relaunch. My job was to animate the pages."
+    },
+    {
         id: "221156939",
         title: "Spotify Hashtag-Generator",
         description: "I animated this video teasing Spotify´s Hashtag-Generator. Design by " +
@@ -57,5 +62,4 @@ const videos = [
         title: "CityLeaks Documentary Titles", 
         description: "Titles/Graphics for City Leaks Cologne Festival Documentary by Ömer Mutlu"
     }
-
 ]
