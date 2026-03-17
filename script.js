@@ -77,7 +77,7 @@ let currentVideo = videos[0].id;
 // -----------------------------
 // Grid rendern
 // -----------------------------
-function renderGrid() {
+/* function renderGrid() {
     grid.innerHTML = "";
 
     videos.forEach(video => {
@@ -94,6 +94,54 @@ function renderGrid() {
 
         grid.appendChild(thumb);
     });
+} */
+// Cache für die Thumbnail-URLs
+// Cache aus LocalStorage laden oder leeren
+const thumbnailCache = JSON.parse(localStorage.getItem("thumbnailCache") || "{}");
+
+async function renderGrid() {
+    grid.innerHTML = "";
+
+    const promises = videos.map(async video => {
+        if (video.id === currentVideo) return null;
+
+        const thumb = document.createElement("div");
+        thumb.className = "thumb";
+
+        const img = document.createElement("img");
+        thumb.appendChild(img);
+
+        // URL aus LocalStorage oder Cache nutzen
+        if (thumbnailCache[video.id]) {
+            img.src = thumbnailCache[video.id];
+        } else {
+            try {
+                const response = await fetch(`https://vimeo.com/api/oembed.json?url=https://vimeo.com/${video.id}`);
+                const data = await response.json();
+                img.src = data.thumbnail_url;
+
+                // Cache aktualisieren
+                thumbnailCache[video.id] = data.thumbnail_url;
+                localStorage.setItem("thumbnailCache", JSON.stringify(thumbnailCache));
+            } catch (err) {
+                console.error("Fehler beim Laden des Thumbnails für Video", video.id, err);
+                img.alt = "Thumbnail konnte nicht geladen werden";
+            }
+        }
+
+        thumb.onclick = () => {
+            // geklicktes Thumb ausblenden
+            thumb.style.transition = "opacity 0.5s ease"
+            thumb.style.opacity = 0
+            // nach 0.5s Video laden
+            setTimeout(() => {
+                loadVideo(video.id);
+            }, 350)
+        }
+        grid.appendChild(thumb);
+    });
+
+    await Promise.all(promises);
 }
 
 // -----------------------------

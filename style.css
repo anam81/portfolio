@@ -73,10 +73,15 @@ body::after {
     flex-wrap: nowrap;
 }
 /* Hover auf den Link, das Overlay wird heller */
-.header-inner a:hover~.logo-overlay {
-    filter: brightness(1.08);
-    transition: filter 0.3s ease;
+.header-inner a ~ .logo-overlay {
+    filter: brightness(1);
+    transition: filter 0.4s ease; /* Transition auf dem Grundzustand */
 }
+.header-inner a:hover ~ .logo-overlay {
+    filter: brightness(1.09);
+    transition: filter 0.5s ease;
+}
+
 nav {
     min-width: 0;
 }
@@ -178,7 +183,6 @@ nav {
 .video-wrapper.video-16-10 {
     aspect-ratio: 16 / 10;
 }
-
 .video-wrapper.video-4-3 {
     aspect-ratio: 4 / 3;
 }
@@ -226,7 +230,7 @@ nav {
     /* 16:9 */
     cursor: pointer;
     opacity: 1;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.4s ease;
     /* Rückweg = 0.3s */
 }
 
@@ -238,7 +242,7 @@ nav {
     height: 100%;
     object-fit: cover;
     filter: brightness(1);
-    transition: filter 0.3s ease;
+    transition: filter 0.4s ease;
     /* Rückweg = 0.3s */
 }
 

@@ -11,6 +11,13 @@ const videos = [
         description: "I animated this video teasing Spotify´s Hashtag-Generator. Design by " +
             "<a href='https://www.dayy.com/' target='_blank'>dayy</a>"
     },
+    {
+        id: "1174525738",
+        title: "Opener for TV Show (pitch)",
+        description: "A pitch we did in 2015. We designed the On-Air Packaging for a German TV Channel Show (ZDF). "+
+                    "This is the opener.<br>"+
+                    "Agency: <a href='https://www.studio-paeper.tv/' target='_blank'>Studio Paeper</a><br>"
+    },
     { 
         id: "221156673", 
         title: "Starkregen", 
