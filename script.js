@@ -69,64 +69,64 @@ loadHTML("footerContainer", "/footer.html");
 // -----------------------------
 // 2️⃣ Video Grid & Wechsel (alte Logik)
 // -----------------------------
+const player = document.getElementById("mainPlayer");
+const grid = document.getElementById("videoGrid");
+const descriptionEl = document.getElementById("videoDescription");
+let currentVideo = videos[0].id;
 
-const player = document.getElementById("mainPlayer")
-const grid = document.getElementById("videoGrid")
-const descriptionEl = document.getElementById("videoDescription")
-let currentVideo = videos[0].id
-// initial Beschreibung setzen
-descriptionEl.innerHTML = videos.find(v => v.id === currentVideo).description || ""
-
+// -----------------------------
+// Grid rendern
+// -----------------------------
 function renderGrid() {
-
-    grid.innerHTML = ""
+    grid.innerHTML = "";
 
     videos.forEach(video => {
+        if (video.id === currentVideo) return; // aktuelles Video ausblenden
 
-        if (video.id === currentVideo) return
+        const thumb = document.createElement("div");
+        thumb.className = "thumb";
 
-        const thumb = document.createElement("div")
-        thumb.className = "thumb"
+        const img = document.createElement("img");
+        img.src = `https://vumbnail.com/${video.id}.jpg`;
+        thumb.appendChild(img);
 
-        const img = document.createElement("img")
-        img.src = `https://vumbnail.com/${video.id}.jpg`
+        thumb.onclick = () => loadVideo(video.id);
 
-        thumb.appendChild(img)
-
-        thumb.onclick = () => {
-            // Video sofort wechseln
-            currentVideo = video.id
-            player.src = `https://player.vimeo.com/video/${video.id}?title=0&byline=0&portrait=0&color=dd5424`
-
-            // Beschreibung mit HTML-Link setzen
-            descriptionEl.innerHTML = video.description || ""
-
-            // geklicktes Thumb ausblenden
-            thumb.style.transition = "opacity 0.5s ease"
-            thumb.style.opacity = 0
-
-            // nach 0.5s Grid neu rendern
-            setTimeout(() => {
-                renderGrid()
-            }, 350)
-        }
-
-        grid.appendChild(thumb)
-
-    })
-
+        grid.appendChild(thumb);
+    });
 }
 
+// -----------------------------
+// Zentrale Funktion zum Videowechsel
+// -----------------------------
 function loadVideo(id) {
-    currentVideo = id
-    player.src = `https://player.vimeo.com/video/${id}?title=0&byline=0&portrait=0&color=dd5424`
+    currentVideo = id;
+
+    const vid = videos.find(v => v.id === id);
+    if (!vid) return;
+
+    // Player src setzen
+    player.src = `https://player.vimeo.com/video/${id}?title=0&byline=0&portrait=0&color=dd5424`;
 
     // Beschreibung setzen
-    const vid = videos.find(v => v.id === id)
-    descriptionEl.innerHTML = vid.description || ""  // nur hier
+    descriptionEl.innerHTML = vid.description || "";
 
-    renderGrid()
+    // Wrapper-Klasse für Ratio setzen
+    const wrapper = document.querySelector('.video-wrapper');
+    if (wrapper) {
+        wrapper.classList.remove('video-16-10', 'video-4-3'); // alte Klassen entfernen
+        if (vid.ratio && vid.ratio !== "16/9") {
+            const className = 'video-' + vid.ratio.replace('/', '-');
+            wrapper.classList.add(className);
+            console.log('Klasse hinzugefügt:', className);
+        }
+    }
+
+    // Grid neu rendern
+    renderGrid();
 }
-
-renderGrid()
+// -----------------------------
+// Erstes Video laden
+// -----------------------------
+loadVideo(currentVideo);
 
