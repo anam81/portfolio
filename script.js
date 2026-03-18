@@ -103,7 +103,7 @@ async function renderGrid() {
     grid.innerHTML = "";
 
     const promises = videos.map(async video => {
-        if (video.id === currentVideo) return null;
+        if (video.id === currentVideo) return;
 
         const thumb = document.createElement("div");
         thumb.className = "thumb";
@@ -111,7 +111,10 @@ async function renderGrid() {
         const img = document.createElement("img");
         thumb.appendChild(img);
 
-        // URL aus LocalStorage oder Cache nutzen
+        // 👉 SOFORT hinzufügen (richtige Reihenfolge!)
+        grid.appendChild(thumb);
+
+        // danach async laden
         if (thumbnailCache[video.id]) {
             img.src = thumbnailCache[video.id];
         } else {
@@ -120,25 +123,21 @@ async function renderGrid() {
                 const data = await response.json();
                 img.src = data.thumbnail_url;
 
-                // Cache aktualisieren
                 thumbnailCache[video.id] = data.thumbnail_url;
                 localStorage.setItem("thumbnailCache", JSON.stringify(thumbnailCache));
             } catch (err) {
-                console.error("Fehler beim Laden des Thumbnails für Video", video.id, err);
-                img.alt = "Thumbnail konnte nicht geladen werden";
+                console.error("Fehler beim Laden", video.id, err);
             }
         }
 
         thumb.onclick = () => {
-            // geklicktes Thumb ausblenden
-            thumb.style.transition = "opacity 0.5s ease"
-            thumb.style.opacity = 0
-            // nach 0.5s Video laden
+            thumb.style.transition = "opacity 0.5s ease";
+            thumb.style.opacity = 0;
+
             setTimeout(() => {
                 loadVideo(video.id);
-            }, 350)
-        }
-        grid.appendChild(thumb);
+            }, 350);
+        };
     });
 
     await Promise.all(promises);
