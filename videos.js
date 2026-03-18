@@ -4,11 +4,16 @@ const videos = [
         title: "demoreel", 
         description: "A showcase of my work"
     },
-    { 
+    {
+        id: "1174569556",
+        title: "walk sessions",
+        description: "It was a lot of fun making these funky little characters walk and generate the beats—sound on!"
+    },
+    {
         id: "760828515", 
-        title: "from outside", 
+        title: "from outside",
         description: "I had the honor to animate a music video from the cologne band Luciel: From Outside - " +
-                        "<a href='https://www.lucielband.com' target='_blank'>www.lucielband.com</a>"
+            "<a href='https://www.lucielband.com' target='_blank'>www.lucielband.com</a>"
     },
     { 
         id: "159606491", 
@@ -19,6 +24,11 @@ const videos = [
         id: "259777046", 
         title: "the tri drank the angle", 
         description: "The tri drank the angle - exploring and playing around with triangles and hexagons"
+    },
+    {
+        id: "1174586225",
+        title: "amazing sight",
+        description: "Another character animation I created — really happy with how it turned out."
     },
     { 
         id: "363118107", 

@@ -162,7 +162,7 @@ function loadVideo(id) {
     // Wrapper-Klasse für Ratio setzen
     const wrapper = document.querySelector('.video-wrapper');
     if (wrapper) {
-        wrapper.classList.remove('video-16-10', 'video-4-3'); // alte Klassen entfernen
+        wrapper.classList.remove('video-16-10', 'video-4-3', 'video-1-1'); // alte Klassen entfernen
         if (vid.ratio && vid.ratio !== "16/9") {
             const className = 'video-' + vid.ratio.replace('/', '-');
             wrapper.classList.add(className);
@@ -172,14 +172,27 @@ function loadVideo(id) {
     // Grid neu rendern
     renderGrid();
 
-    // Nach oben scrollen zum Video
-    window.scrollTo({
-        top: wrapper.offsetTop - 20, // 20px Abstand
-        behavior: 'smooth'
-    });
+    // Nach oben scrollen zum Video (nur wenn nicht sichtbar)
+    if (wrapper && !isElementInViewport(wrapper)) {
+        window.scrollTo({
+            top: wrapper.offsetTop - 20,
+            behavior: 'smooth'
+        });
+    }
 }
 // -----------------------------
 // Erstes Video laden
 // -----------------------------
 loadVideo(currentVideo);
+
+function isElementInViewport(el) {
+    const rect = el.getBoundingClientRect();
+
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+}
 
