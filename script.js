@@ -109,6 +109,8 @@ async function renderGrid() {
         thumb.className = "thumb";
 
         const img = document.createElement("img");
+        // 👉 ALT setzen
+        img.alt = "Motion Design in After Effects, Köln / Cologne " + video.description;
         thumb.appendChild(img);
 
         // 👉 SOFORT hinzufügen (richtige Reihenfolge!)
