@@ -12,6 +12,15 @@ const videos = [
         ratio: "235/100"
     },
     {
+        id: "1175321911",
+        title: "HydroDeSal",
+        description: "I created this animation for HydroDeSal, a research project focused on seawater desalination in the Persian Gulf. "+
+                    "The initiative explores decentralized systems that could provide reliable access to clean drinking water " +
+                    "for communities in the region.<br>"+
+                    "Directed by <a href='https://www.heinzenziob.de' target='_blank'>Florian Heinzen-Ziob</a><br>"+
+                    "<a href='https://www.youtube.com/watch?v=d9KdfnNRlV4' target='_blank'>Watch the full video</a>"
+    },
+    {
         id: "260226326",
         title: "energy future",
         description: "This was for a pitch of an energy providers website relaunch. My job was to animate the pages.",
@@ -35,17 +44,17 @@ const videos = [
         title: "Starkregen", 
         description: "Graphic animation for science TV program 'Quarks & Co', WDR"
     },
+    {
+        id: "221081352",
+        title: "Opener ZDF Adieu",
+        description: "I animated this opener for the tv show ZDF Adieu.<br>" +
+            "Agency: <a href='https://www.studio-paeper.tv/' target='_blank'>Studio Paeper</a><br>" +
+            "music: The Fall by Peter Rudenko licensed under CC BY 4.0"
+    },
     { 
         id: "222078676", 
         title: "westart studio background", 
         description: "I delevoped many of the screenbackgrounds of the WDR Westart live studio. These are some of those."
-    },
-    { 
-        id: "221081352", 
-        title: "Opener ZDF Adieu", 
-        description: "I animated this opener for the tv show ZDF Adieu.<br>"+
-                    "Agency: <a href='https://www.studio-paeper.tv/' target='_blank'>Studio Paeper</a><br>" +
-                    "music: The Fall by Peter Rudenko licensed under CC BY 4.0"
     },
     { 
         id: "763383592", 
