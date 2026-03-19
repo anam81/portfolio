@@ -186,6 +186,12 @@ nav {
 .video-wrapper.video-4-3 {
     aspect-ratio: 4 / 3;
 }
+.video-wrapper.video-1-1 {
+    aspect-ratio: 1 / 1;
+}
+.video-wrapper.video-235-100 {
+    aspect-ratio: 235 / 100;
+}
 
 /* iframe responsive */
 .video-wrapper iframe {

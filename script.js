@@ -161,7 +161,7 @@ function loadVideo(id) {
     // Wrapper-Klasse für Ratio setzen
     const wrapper = document.querySelector('.video-wrapper');
     if (wrapper) {
-        wrapper.classList.remove('video-16-10', 'video-4-3', 'video-1-1'); // alte Klassen entfernen
+        wrapper.classList.remove('video-16-10', 'video-4-3', 'video-1-1', 'video-235-100'); // alte Klassen entfernen
         if (vid.ratio && vid.ratio !== "16/9") {
             const className = 'video-' + vid.ratio.replace('/', '-');
             wrapper.classList.add(className);
