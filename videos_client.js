@@ -51,6 +51,18 @@ const videos = [
             "Agency: <a href='https://www.studio-paeper.tv/' target='_blank'>Studio Paeper</a><br>" +
             "music: The Fall by Peter Rudenko licensed under CC BY 4.0"
     },
+    {
+        id: "1175435060",
+        title: "ZDF Auslandsjournal",
+        description: "This graphic I designed and developed for ZDF Auslandsjournal: Die Doku: Kampf ums Wasser<br>" +
+                    "Agency: <a href='https://www.studio-paeper.tv/' target='_blank'>Studio Paeper</a><br>"
+    },
+    {
+        id: "1175443814",
+        title: "WDR Cosmo, Iran im Herzen",
+        description: "For a WDR Cosmo podcast trailer (Iran im Herzen), I animated these graphics as an intro.<br>" +
+            "Agency: <a href='https://www.studio-paeper.tv/' target='_blank'>Studio Paeper</a><br>"
+    },
     { 
         id: "222078676", 
         title: "westart studio background", 
