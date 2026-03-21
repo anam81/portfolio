@@ -71,7 +71,7 @@ const videos = [
     { 
         id: "763383592", 
         title: "Gesundes Sperma", 
-        description: "Animation for science tv program Quarks, WDR"
+        description: "Compositing and animation for science tv program Quarks, WDR"
     },
     { 
         id: "760875033", 
