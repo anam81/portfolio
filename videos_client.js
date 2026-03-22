@@ -23,7 +23,7 @@ const videos = [
     {
         id: "260226326",
         title: "energy future",
-        description: "This was for a pitch of an energy providers website relaunch. My job was to animate the pages, navigations and transitions.",
+        description: "This was part of a pitch for the relaunch of an energy provider’s website. My role was to animate the pages, navigation, and transitions.",
         ratio: "16/10"
     },
     {
